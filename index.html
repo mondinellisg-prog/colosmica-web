@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COLÓSMICA | Sitio Oficial</title>
+    <meta name="description" content="Web oficial de la banda Colósmica. Shows, música, videos y tienda oficial.">
+
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* DEFINICIÓN DE LA FUENTE DESCARGADA */
+        @font-face {
+            font-family: 'BestHoliday';
+            src: url('best-holiday.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* --- 1. VARIABLES Y BASE --- */
+        :root {
+            --bg-color: #050505;
+            --card-bg: #111;
+            --accent: #d4af37; /* Dorado Premium */
+            --whatsapp: #25D366; /* Verde WhatsApp */
+            --text-main: #f0f0f0;
+            --text-muted: #aaaaaa;
+            
+            --font-logo: 'BestHoliday', cursive;
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        /* --- 2. NAVEGACIÓN --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.95), rgba(5,5,5,0.8));
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-family: var(--font-logo);
+            font-size: 3.5rem;
+            color: var(--text-main);
+            letter-spacing: 0;
+            text-transform: none;
+            font-weight: 400;
+            transform: rotate(-3deg);
+            display: inline-block;
+        }
+
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- 3. HERO (PORTADA) --- */
+        .hero {
+            height: 100vh;
+            /* CAMBIO: position: center 25% baja la imagen en PC */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-color)), 
+                        url('hero.jpg');
+            background-size: cover;
+            background-position: center -45%; 
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            /* Padding top extra para bajar el texto y que no tape la cara */
+            padding-top: 100px;
+        }
+
+        .hero h1 { display: none; } /* Ocultamos el H1 redundante */
+
+        .hero p {
+            font-family: var(--font-title);
+            font-size: 1.4rem; /* Un poco más grande */
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            color: var(--accent);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .btn-hero {
+            padding: 15px 40px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+            background: rgba(0,0,0,0.3); /* Fondo semitransparente para mejor lectura */
+        }
+        .btn-hero:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+
+        /* --- 4. ESTILOS GENERALES --- */
+        section { padding: 80px 8%; border-bottom: 1px solid #111; }
+        
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+        .section-subtitle { color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; display: block; }
+
+        /* --- 5. NOVEDADES --- */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .news-card { background: var(--card-bg); border: 1px solid #222; transition: 0.3s; }
+        .news-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .news-img { height: 200px; background: #222; overflow: hidden; }
+        .news-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .news-card:hover .news-img img { transform: scale(1.1); }
+        .news-content { padding: 20px; }
+        .news-date { font-size: 0.8rem; color: var(--accent); font-weight: bold; }
+        .news-title { font-family: var(--font-title); font-size: 1.2rem; margin: 10px 0; }
+        .news-excerpt { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* --- 6. BIO --- */
+        .bio-container { display: flex; align-items: center; gap: 50px; }
+        .bio-img { flex: 1; min-width: 300px; }
+        .bio-img img { width: 100%; border-radius: 5px; box-shadow: 20px 20px 0px rgba(20,20,20,1); }
+        .bio-text { flex: 1; }
+        .bio-text p { margin-bottom: 20px; color: var(--text-muted); font-size: 1.05rem; }
+
+        /* --- 7. SHOWS --- */
+        .shows-list { max-width: 900px; margin: 0 auto; }
+        .show-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid #222;
+            transition: 0.3s;
+        }
+        .show-row:hover { background: #0a0a0a; padding-left: 15px; border-color: var(--accent); }
+        .show-date { font-family: var(--font-title); font-size: 1.5rem; color: var(--text-main); width: 100px; }
+        .show-info { flex: 1; padding: 0 20px; }
+        .show-venue { font-weight: bold; font-size: 1.2rem; color: var(--accent); }
+        .show-city { text-transform: uppercase; font-size: 0.8rem; color: var(--text-muted); }
+        
+        .btn-ticket {
+            background: transparent;
+            border: 1px solid var(--whatsapp);
+            color: var(--whatsapp);
+            padding: 8px 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 50px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .btn-ticket:hover { background: var(--whatsapp); color: #fff; }
+
+        /* --- 8. VIDEOS --- */
+        .video-carousel-wrapper { position: relative; max-width: 1200px; margin: 0 auto; }
+        .video-carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) #111;
+        }
+        .video-item { min-width: 300px; flex: 1; background: #000; border-radius: 10px; overflow: hidden; }
+        .video-item iframe { width: 100%; aspect-ratio: 16/9; border: none; }
+        
+        .carousel-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.8); color: white; border: none;
+            width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+            z-index: 10; font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+        }
+        .prev-btn { left: -20px; }
+        .next-btn { right: -20px; }
+
+        /* --- 9. MÚSICA --- */
+        .spotify-wrapper { max-width: 800px; margin: 0 auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-radius: 12px; }
+
+        /* --- 10. TIENDA --- */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        .shop-item {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        .shop-item:hover { border-color: var(--accent); }
+        .tag {
+            position: absolute; top: 15px; right: 15px;
+            background: var(--accent); color: #000;
+            font-size: 0.7rem; font-weight: bold; padding: 3px 8px; text-transform: uppercase; border-radius: 2px;
+        }
+        .shop-icon { font-size: 3rem; color: #333; margin-bottom: 20px; }
+        .shop-price { font-size: 1.8rem; font-weight: 700; color: var(--text-main); margin: 10px 0; display: block; }
+        
+        .btn-whatsapp {
+            background: var(--whatsapp);
+            color: #fff;
+            padding: 12px;
+            width: 100%;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .btn-whatsapp:hover { background: #1ebd50; transform: scale(1.02); }
+
+        /* FOOTER */
+        footer { text-align: center; padding: 60px 20px; background: #000; }
+        .social-links { margin-bottom: 20px; }
+        .social-links a { font-size: 1.5rem; margin: 0 15px; color: #666; }
+        .social-links a:hover { color: var(--accent); }
+
+        /* --- RESPONSIVE Y AJUSTES MOBILE --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; background: #000; position: absolute; top: 70px; right: 0; width: 100%; padding: 20px; text-align: center; }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .bio-container { flex-direction: column; }
+            .show-row { flex-direction: column; text-align: center; gap: 10px; }
+            .show-date { width: auto; border-bottom: 1px solid var(--accent); padding-bottom: 5px; }
+
+            /* AJUSTE HERO MOBILE */
+            /* AJUSTE HERO MOBILE */
+.hero {
+    /* 1. Forzamos a que la imagen sea un 20% más alta que la pantalla para poder bajarla */
+    background-size: auto 120%; 
+    
+    /* 2. NO REPETIR la imagen si sobra espacio */
+    background-repeat: no-repeat;
+
+    /* 3. POSICIÓN: 
+       85% = Mueve la foto a la izquierda para ver a la cantante (que está a la derecha).
+       0%  = Pega la foto arriba de todo para que se vea la cara. */
+    background-position: 65% -50%; 
+
+    background-attachment: scroll;
+    padding-top: 100px;
+}
+
+
+        }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <div class="logo">Colósmica</div>
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links">
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#news">Novedades</a></li>
+            <li><a href="#bio">Bio</a></li>
+            <li><a href="#shows">Shows</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#music">Música</a></li>
+            <li><a href="#shop">Tienda</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <header id="home" class="hero">
+        <h1 style="display:none;">Colósmica</h1> <!-- Oculto -->
+        <p>Rock &amp; Pop Cósmico</p>
+        <a href="#music" class="btn-hero">Escuchar Ahora</a>
+    </header>
+
+    <!-- NOVEDADES -->
+    <section id="news">
+        <div class="section-header">
+            <span class="section-subtitle">Lo último</span>
+            <h2 class="section-title">Novedades</h2>
+        </div>
+        <div class="news-grid">
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=500&q=60" alt="Noticia">
+                </div>
+                <div class="news-content">
+                    <span class="news-date">27 ENERO 2026</span>
+                    <h3 class="news-title">Lanzamiento del Videoclip</h3>
+                    <p class="news-excerpt">Ya está disponible nuestro nuevo video en YouTube. Corré a verlo.</p>
+                </div>
+            </article>
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=500&q=60" alt="Prensa">
+                </div>
+                <div class="news-content">
+                    <span class="news-date">15 ENERO 2026</span>
+                    <h3 class="news-title">Entrevista en Radio Vorterix</h3>
+                    <p class="news-excerpt">Estuvimos charlando sobre la grabación del nuevo disco y lo que se viene.</p>
+                </div>
+            </article>
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=500&q=60" alt="Estudio">
+                </div>
+                <div class="news-content">
+                    <span class="news-date">02 ENERO 2026</span>
+                    <h3 class="news-title">Volvemos al Estudio</h3>
+                    <p class="news-excerpt">Comenzamos a grabar las maquetas para el sucesor de "Orígenes".</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- BIO -->
+    <section id="bio">
+        <div class="section-header">
+            <span class="section-subtitle">La Historia</span>
+            <h2 class="section-title">Biografía</h2>
+        </div>
+        <div class="bio-container">
+            <div class="bio-img">
+                <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=600&q=80" alt="Colósmica Bio">
+            </div>
+            <div class="bio-text">
+                <p>Nacidos de la energía vibrante de Buenos Aires y la inmensidad del cosmos, <strong>Colósmica</strong> fusiona el indie rock con texturas electrónicas envolventes para crear un sonido único.</p>
+                <p>Desde sus inicios, la banda ha buscado crear no solo canciones, sino atmósferas. Con influencias que van desde el rock alternativo de los 90 hasta el pop sintético moderno, su música es un viaje interestelar diseñado para el escenario principal.</p>
+                <p>"No hacemos música para escuchar, hacemos música para sentir."</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Signature_sample.svg" style="width: 150px; opacity: 0.7; filter: invert(1); margin-top: 20px;" alt="Firma">
+            </div>
+        </div>
+    </section>
+
+    <!-- PRÓXIMOS SHOWS -->
+    <section id="shows">
+        <div class="section-header">
+            <span class="section-subtitle">Tour 2026</span>
+            <h2 class="section-title">Próximos Shows</h2>
+        </div>
+        <div class="shows-list">
+            <div class="show-row">
+                <div class="show-date">31 ENE</div>
+                <div class="show-info">
+                    <div class="show-venue">LoDelPabier</div>
+                    <div class="show-city">Ciudad Jardín</div>
+                </div>
+                <a href="https://wa.me/5491168618601?text=Hola!%20Quiero%20reservar%20entradas%20para%20el%20show%20del%2031%20de%20Enero" target="_blank" class="btn-ticket">
+                    <i class="fab fa-whatsapp"></i> Reservar
+                </a>
+            </div>
+            <div class="show-row">
+                <div class="show-date">22 MAR</div>
+                <div class="show-info">
+                    <div class="show-venue">La Tangente</div>
+                    <div class="show-city">Palermo, CABA</div>
+                </div>
+                <a href="https://wa.me/5491168618601?text=Hola!%20Quiero%20reservar%20entradas%20para%20el%20show%20del%2022%20de%20Marzo" target="_blank" class="btn-ticket">
+                    <i class="fab fa-whatsapp"></i> Reservar
+                </a>
+            </div>
+            <div class="show-row">
+                <div class="show-date">10 ABR</div>
+                <div class="show-info">
+                    <div class="show-venue">Cultural Morón</div>
+                    <div class="show-city">Buenos Aires</div>
+                </div>
+                <a href="https://wa.me/5491168618601?text=Hola!%20Quiero%20reservar%20entradas%20para%20el%20show%20del%2010%20de%20Abril" target="_blank" class="btn-ticket">
+                    <i class="fab fa-whatsapp"></i> Reservar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEOS (CARRUSEL CORREGIDO) -->
+    <section id="videos" style="background: #080808;">
+        <div class="section-header">
+            <span class="section-subtitle">Visuales</span>
+            <h2 class="section-title">Videos Oficiales</h2>
+        </div>
+        
+        <div class="video-carousel-wrapper">
+            <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+            
+            <div class="video-carousel" id="videoCarousel">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/su8w3fQJ-Sc" title="Video 1" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/-q2BQm1cl34" title="Video 2" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/h8fYuyENz9M" title="Video 3" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/p7e0WiHKXlE" title="Video 4" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/alAHqQiizX8" title="Video 5" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <button class="carousel-btn next-btn" onclick="moveCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="https://www.youtube.com/@Colosmica" target="_blank" style="color: #666; font-size: 0.9rem;">Ver canal completo <i class="fas fa-external-link-alt"></i></a>
+        </div>
+    </section>
+
+    <!-- MÚSICA -->
+    <section id="music">
+        <div class="section-header">
+            <span class="section-subtitle">Streaming</span>
+            <h2 class="section-title">En Spotify</h2>
+        </div>
+        <div class="spotify-wrapper">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/2zrO6NU9SmG76py3tkrHWY?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- TIENDA -->
+    <section id="shop">
+        <div class="section-header">
+            <span class="section-subtitle">Apoyá a los artistas</span>
+            <h2 class="section-title">Tienda Digital</h2>
+        </div>
+
+        <div class="shop-grid">
+            <div class="shop-item">
+                <div class="tag">Digital Audio</div>
+                <div class="shop-icon"><i class="fas fa-compact-disc"></i></div>
+                <h3>Pack "Sesiones Cósmicas"</h3>
+                <p style="color: #888; font-size: 0.9rem; margin-bottom: 10px;">5 Temas en Alta Calidad (WAV/MP3) + Arte de Tapa Digital.</p>
+                <span class="shop-price">$15.000 ARS</span>
+                <a href="https://wa.me/5491168618601?text=Hola!%20Quiero%20comprar%20el%20Pack%20Digital%20Sesiones%20Cósmicas" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Comprar
+                </a>
+                <p style="font-size: 0.7rem; color: #555; margin-top: 10px;">Te enviamos link de descarga tras transferir.</p>
+            </div>
+            <div class="shop-item">
+                <div class="tag">Evento</div>
+                <div class="shop-icon"><i class="fas fa-wine-glass"></i></div>
+                <h3>Música & Vinos</h3>
+                <p style="color: #888; font-size: 0.9rem; margin-bottom: 10px;">Entrada anticipada para el evento exclusivo con degustación.</p>
+                <span class="shop-price">$15.000 ARS</span>
+                <a href="https://wa.me/5491168618601?text=Hola!%20Quiero%20comprar%20entrada%20para%20Música%20y%20Vinos" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Reservar
+                </a>
+            </div>
+            <div class="shop-item">
+                <div class="tag">Merch</div>
+                <div class="shop-icon"><i class="fas fa-tshirt"></i></div>
+                <h3>Remera Oficial</h3>
+                <p style="color: #888; font-size: 0.9rem; margin-bottom: 10px;">Diseño exclusivo Tour 2026. Talles S - M - L - XL.</p>
+                <span class="shop-price">$18.000 ARS</span>
+                <a href="https://wa.me/5491168618601?text=Hola!%20Quiero%20comprar%20la%20Remera%20Oficial" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Pedir
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/colosmica" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://open.spotify.com/artist/2zrO6NU9SmG76py3tkrHWY" target="_blank"><i class="fab fa-spotify"></i></a>
+            <a href="https://www.youtube.com/@Colosmica" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p style="color: #444; font-size: 0.8rem;">&copy; 2026 COLÓSMICA. TODOS LOS DERECHOS RESERVADOS.</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function moveCarousel(direction) {
+            const container = document.getElementById('videoCarousel');
+            const scrollAmount = 320; 
+            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
