@@ -1,34 +1,83 @@
+backend:
+  name: github
+  repo: mondinellisg-prog/colosmica-web # TU REPO
+  branch: main
+  auth_type: pkce
+  app_id: Ov23liuVdtEfaXovkr7N
+
+media_folder: "assets"
+public_folder: "assets"
+
+site_url: https://colosmica-web.pages.dev
+
+# Esto hace que el CMS guarde un archivo de datos en lugar de editar el HTML
 collections:
-  - name: "paginas"
-    label: "Páginas"
+  - name: "contenido"
+    label: "Contenido de la Web"
     files:
-      - name: "home"
-        label: "Página Principal"
-        file: "index.html"
-        format: "frontmatter"
+      - name: "data"
+        label: "Datos del Sitio"
+        file: "data.json" # <--- ACÁ SE GUARDAN LOS DATOS
         fields:
-          # --- SECCIÓN HERO ---
+          # --- HERO ---
           - name: "hero"
-            label: "Bloque de Inicio (Hero)"
+            label: "Portada (Hero)"
             widget: "object"
+            collapsed: true
             fields:
-              - {label: "Título Grande", name: "title", widget: "string"}
-              - {label: "Subtítulo", name: "subtitle", widget: "string"}
-              - {label: "Imagen de Fondo", name: "image", widget: "image"}
+              - {label: "Subtítulo (Ej: Rock & Pop)", name: "subtitle", widget: "string"}
+              - {label: "Texto Botón", name: "btn_text", widget: "string"}
+              - {label: "Link Botón (Ej: #music)", name: "btn_link", widget: "string"}
+              - {label: "Imagen de Fondo", name: "bg_image", widget: "image"}
 
-          # --- SECCIÓN SERVICIOS (Lista repetible) ---
-          - name: "servicios"
-            label: "Nuestros Servicios"
-            widget: "list" # <--- Esto permite al cliente agregar 1, 2, 10 servicios
+          # --- NOVEDADES ---
+          - name: "news"
+            label: "Sección Novedades"
+            widget: "list"
+            collapsed: true
             fields:
-              - {label: "Nombre del Servicio", name: "nombre", widget: "string"}
-              - {label: "Descripción", name: "desc", widget: "text"}
-              - {label: "Icono/Imagen", name: "icono", widget: "image"}
+              - {label: "Título Noticia", name: "title", widget: "string"}
+              - {label: "Fecha", name: "date", widget: "string"}
+              - {label: "Bajada / Resumen", name: "excerpt", widget: "text"}
+              - {label: "Foto", name: "image", widget: "image"}
 
-          # --- SECCIÓN CONTACTO ---
-          - name: "contacto"
-            label: "Datos de Contacto"
+          # --- BIO ---
+          - name: "bio"
+            label: "Sección Biografía"
             widget: "object"
+            collapsed: true
             fields:
-              - {label: "WhatsApp", name: "tel", widget: "string"}
-              - {label: "Email", name: "mail", widget: "string"}
+              - {label: "Texto Principal (Párrafos)", name: "text", widget: "markdown"}
+              - {label: "Foto de la Banda", name: "image", widget: "image"}
+
+          # --- SHOWS ---
+          - name: "shows"
+            label: "Próximos Shows"
+            widget: "list"
+            collapsed: true
+            fields:
+              - {label: "Día (Ej: 31 ENE)", name: "date", widget: "string"}
+              - {label: "Lugar (Venue)", name: "venue", widget: "string"}
+              - {label: "Ciudad", name: "city", widget: "string"}
+              - {label: "Link WhatsApp Reservas", name: "link", widget: "string"}
+
+          # --- VIDEOS (YOUTUBE) ---
+          - name: "videos"
+            label: "Carrusel de Videos"
+            widget: "list"
+            collapsed: true
+            fields:
+              - {label: "ID del Video Youtube (Ej: su8w3fQJ-Sc)", name: "id", widget: "string"}
+
+          # --- TIENDA ---
+          - name: "shop"
+            label: "Tienda / Productos"
+            widget: "list"
+            collapsed: true
+            fields:
+              - {label: "Nombre Producto", name: "name", widget: "string"}
+              - {label: "Etiqueta (Ej: Merch)", name: "tag", widget: "string"}
+              - {label: "Descripción Corta", name: "desc", widget: "string"}
+              - {label: "Precio", name: "price", widget: "string"}
+              - {label: "Link WhatsApp Compra", name: "link", widget: "string"}
+              - {label: "Icono (Clase FontAwesome, ej: fas fa-tshirt)", name: "icon", widget: "string"}
