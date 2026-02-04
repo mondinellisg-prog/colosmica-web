@@ -3,17 +3,16 @@ backend:
   repo: mondinellisg-prog/colosmica-web
   branch: main
   auth_type: pkce
-  app_id: Ov23liuVdtEfaXovkr7N
+  app_id: TU_CLIENT_ID_ACA # Poné tu ID real
 
-media_folder: "" 
-public_folder: ""
+site_url: https://colosmica-web.pages.dev
 
 collections:
   - name: "paginas"
     label: "Páginas"
     files:
       - name: "home"
-        label: "Página Principal (Index)"
+        label: "Página Principal"
         file: "index.html"
         fields:
           - {label: "Título", name: "title", widget: "string"}
