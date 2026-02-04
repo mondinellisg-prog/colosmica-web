@@ -3,7 +3,11 @@ backend:
   repo: mondinellisg-prog/colosmica-web
   branch: main
   auth_type: pkce
-  app_id: TU_CLIENT_ID_ACA # Poné tu ID real
+  app_id: Ov23liuVdtEfaXovkr7N
+
+# Sveltia necesita que estas carpetas tengan un nombre claro
+media_folder: "assets" 
+public_folder: "/assets"
 
 site_url: https://colosmica-web.pages.dev
 
