@@ -1,0 +1,43 @@
+{
+  "hero": {
+    "subtitle": "Titulo de prueba para Rodri",
+    "btn_text": "Ver",
+    "btn_link": "sd",
+    "bg_image": "/assets/hero.jpg"
+  },
+  "news": [
+    {
+      "title": "Noved",
+      "date": "ew",
+      "excerpt": "sds",
+      "image": "/assets/hero.jpg"
+    }
+  ],
+  "bio": {
+    "text": "dsds",
+    "image": "/assets/hero.jpg"
+  },
+  "shows": [
+    {
+      "date": "sdf",
+      "venue": "sdf",
+      "city": "r2r23",
+      "link": "dfdg"
+    }
+  ],
+  "videos": [
+    {
+      "id": "dsfsdf"
+    }
+  ],
+  "shop": [
+    {
+      "name": "gorra",
+      "tag": "3839",
+      "desc": "29439203",
+      "price": "12111",
+      "link": "erwer",
+      "icon": "54645"
+    }
+  ]
+}
