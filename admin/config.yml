@@ -1,18 +1,18 @@
 backend:
   name: github
-  repo: mondinellisg-prog/colosmica-web
+  repo: mondinellisg-prog/colosmica-web # Tu repositorio
   branch: main
+  auth_type: pkce # <-- ESTA ES LA LÍNEA MÁGICA
 
-# Esto permite que Sveltia se autentique sin servidores externos
-media_folder: "assets" 
-public_folder: "/assets"
+media_folder: "" 
+public_folder: ""
 
 collections:
   - name: "paginas"
     label: "Páginas"
     files:
       - name: "home"
-        label: "Página Principal"
+        label: "Página Principal (Index)"
         file: "index.html"
         fields:
           - {label: "Título", name: "title", widget: "string"}
