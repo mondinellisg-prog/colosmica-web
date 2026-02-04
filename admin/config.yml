@@ -1,3 +1,5 @@
+local_backend: true
+display_url: https://colosmica-web.pages.dev
 backend:
   name: github
   repo: mondinellisg-prog/colosmica-web # Confirmá que este sea el nombre exacto
