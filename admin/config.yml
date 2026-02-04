@@ -1,18 +1,19 @@
 backend:
   name: github
-  repo: mondinellisg-prog/colosmica-web # Tu repo
+  repo: mondinellisg-prog/colosmica-web
   branch: main
 
-media_folder: "" 
-public_folder: ""
+# Esto permite que Sveltia se autentique sin servidores externos
+media_folder: "assets" 
+public_folder: "/assets"
 
 collections:
   - name: "paginas"
     label: "Páginas"
     files:
       - name: "home"
-        label: "Página Principal (Index)"
+        label: "Página Principal"
         file: "index.html"
         fields:
-          - {label: "Título de la Web", name: "title", widget: "string"}
-          - {label: "Descripción Principal", name: "body", widget: "markdown"}
+          - {label: "Título", name: "title", widget: "string"}
+          - {label: "Texto", name: "body", widget: "markdown"}
