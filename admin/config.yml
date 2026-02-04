@@ -1,8 +1,9 @@
 backend:
   name: github
-  repo: mondinellisg-prog/colosmica-web # Tu repositorio
+  repo: mondinellisg-prog/colosmica-web
   branch: main
-  auth_type: pkce # <-- ESTA ES LA LÍNEA MÁGICA
+  auth_type: pkce
+  app_id: Ov23liuVdtEfaXovkr7N # <-- Pegá acá la credencial
 
 media_folder: "" 
 public_folder: ""
