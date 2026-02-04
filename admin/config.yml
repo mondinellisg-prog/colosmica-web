@@ -1,25 +1,14 @@
-# Configuración del Backend: Conexión con GitHub
 backend:
   name: github
-  repo: mondinellisg-prog/colosmica-web # Tu repositorio exacto
-  branch: main # La rama que usa Cloudflare Pages
+  repo: mondinellisg-prog/colosmica-web # Tu repo
+  branch: main
 
-# Configuración de Medios: Donde se suben las fotos
-media_folder: "" # Las fotos se guardan en la raíz del proyecto
+media_folder: "" 
 public_folder: ""
 
-# Configuración del Panel
-site_url: https://colosmica-web.pages.dev
-display_url: https://colosmica-web.pages.dev
-logo_url: https://colosmica-web.pages.dev/hero.jpg
-
-# Definición del contenido editable
 collections:
   - name: "paginas"
     label: "Páginas"
-    delete: false # Evita que el cliente borre el archivo index por error
-    editor:
-      preview: false # Desactivamos la vista previa para que cargue más rápido
     files:
       - name: "home"
         label: "Página Principal (Index)"
@@ -27,4 +16,3 @@ collections:
         fields:
           - {label: "Título de la Web", name: "title", widget: "string"}
           - {label: "Descripción Principal", name: "body", widget: "markdown"}
-          - {label: "Imagen Hero", name: "hero_image", widget: "image", required: false}
