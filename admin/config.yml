@@ -1,83 +1,80 @@
 backend:
   name: github
-  repo: mondinellisg-prog/colosmica-web # TU REPO
+  repo: mondinellisg-prog/colosmica-web
   branch: main
   auth_type: pkce
-  app_id: Ov23liuVdtEfaXovkr7N
+  app_id: TU_CLIENT_ID_REAL # <--- ¡PONÉ TU ID ACÁ!
 
 media_folder: "assets"
 public_folder: "assets"
 
 site_url: https://colosmica-web.pages.dev
 
-# Esto hace que el CMS guarde un archivo de datos en lugar de editar el HTML
 collections:
   - name: "contenido"
     label: "Contenido de la Web"
     files:
       - name: "data"
         label: "Datos del Sitio"
-        file: "data.json" # <--- ACÁ SE GUARDAN LOS DATOS
+        file: "data.json"
         fields:
           # --- HERO ---
           - name: "hero"
             label: "Portada (Hero)"
             widget: "object"
-            collapsed: true
+            required: false
             fields:
-              - {label: "Subtítulo (Ej: Rock & Pop)", name: "subtitle", widget: "string"}
-              - {label: "Texto Botón", name: "btn_text", widget: "string"}
-              - {label: "Link Botón (Ej: #music)", name: "btn_link", widget: "string"}
-              - {label: "Imagen de Fondo", name: "bg_image", widget: "image"}
+              - {label: "Subtítulo", name: "subtitle", widget: "string", required: false}
+              - {label: "Texto Botón", name: "btn_text", widget: "string", required: false}
+              - {label: "Link Botón", name: "btn_link", widget: "string", required: false}
+              - {label: "Imagen de Fondo", name: "bg_image", widget: "image", required: false}
 
           # --- NOVEDADES ---
           - name: "news"
             label: "Sección Novedades"
             widget: "list"
-            collapsed: true
+            required: false
             fields:
-              - {label: "Título Noticia", name: "title", widget: "string"}
-              - {label: "Fecha", name: "date", widget: "string"}
-              - {label: "Bajada / Resumen", name: "excerpt", widget: "text"}
-              - {label: "Foto", name: "image", widget: "image"}
+              - {label: "Título Noticia", name: "title", widget: "string", required: false}
+              - {label: "Fecha", name: "date", widget: "string", required: false}
+              - {label: "Bajada / Resumen", name: "excerpt", widget: "text", required: false}
+              - {label: "Foto", name: "image", widget: "image", required: false}
 
           # --- BIO ---
           - name: "bio"
             label: "Sección Biografía"
             widget: "object"
-            collapsed: true
+            required: false
             fields:
-              - {label: "Texto Principal (Párrafos)", name: "text", widget: "markdown"}
-              - {label: "Foto de la Banda", name: "image", widget: "image"}
+              - {label: "Texto Principal", name: "text", widget: "markdown", required: false}
+              - {label: "Foto de la Banda", name: "image", widget: "image", required: false}
 
           # --- SHOWS ---
           - name: "shows"
             label: "Próximos Shows"
             widget: "list"
-            collapsed: true
+            required: false
             fields:
-              - {label: "Día (Ej: 31 ENE)", name: "date", widget: "string"}
-              - {label: "Lugar (Venue)", name: "venue", widget: "string"}
-              - {label: "Ciudad", name: "city", widget: "string"}
-              - {label: "Link WhatsApp Reservas", name: "link", widget: "string"}
+              - {label: "Día (Ej: 31 ENE)", name: "date", widget: "string", required: false}
+              - {label: "Lugar", name: "venue", widget: "string", required: false}
+              - {label: "Ciudad", name: "city", widget: "string", required: false}
+              - {label: "Link Reservas", name: "link", widget: "string", required: false}
 
-          # --- VIDEOS (YOUTUBE) ---
+          # --- VIDEOS ---
           - name: "videos"
             label: "Carrusel de Videos"
             widget: "list"
-            collapsed: true
+            required: false
             fields:
-              - {label: "ID del Video Youtube (Ej: su8w3fQJ-Sc)", name: "id", widget: "string"}
+              - {label: "ID Youtube (su8w3fQJ-Sc)", name: "id", widget: "string", required: false}
 
           # --- TIENDA ---
           - name: "shop"
             label: "Tienda / Productos"
             widget: "list"
-            collapsed: true
+            required: false
             fields:
-              - {label: "Nombre Producto", name: "name", widget: "string"}
-              - {label: "Etiqueta (Ej: Merch)", name: "tag", widget: "string"}
-              - {label: "Descripción Corta", name: "desc", widget: "string"}
-              - {label: "Precio", name: "price", widget: "string"}
-              - {label: "Link WhatsApp Compra", name: "link", widget: "string"}
-              - {label: "Icono (Clase FontAwesome, ej: fas fa-tshirt)", name: "icon", widget: "string"}
+              - {label: "Nombre", name: "name", widget: "string", required: false}
+              - {label: "Etiqueta", name: "tag", widget: "string", required: false}
+              - {label: "Precio", name: "price", widget: "string", required: false}
+              - {label: "WhatsApp link", name: "link", widget: "string", required: false}
