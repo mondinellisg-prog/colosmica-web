@@ -2,8 +2,7 @@ backend:
   name: github
   repo: mondinellisg-prog/colosmica-web
   branch: main
-  auth_type: pkce
-  app_id: Ov23liuVdtEfaXovkr7N
+ 
 
 media_folder: "assets"
 public_folder: "assets"
